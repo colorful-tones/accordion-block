@@ -1,38 +1,51 @@
 /**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+ * WordPress dependencies
  */
+import { useInnerBlocksProps, RichText, useBlockProps, store as blockEditorStore } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
 /**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
+ * Constants
  */
-import { useBlockProps } from '@wordpress/block-editor';
+const TEMPLATE = [
+	[ 'core/paragraph', { placeholder : 'Add content…' } ],
+];
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {WPElement} Element to render.
- */
-export default function Edit() {
-	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Accordion Item – hello from the editor!', 'accordion-item' ) }
-		</p>
+function AccordionItem( { attributes, setAttributes, clientId } ) {
+	const { accordionTitle } = attributes;
+	const { accordionId } = attributes;
+	const blockProps = useBlockProps();
+	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+		template: TEMPLATE,
+		templateLock: false,
+	} );
+
+	return(
+		<>
+			<h3 { ...innerBlocksProps }>
+				<button
+					className='accordion-trigger'
+					onClick={ ( event ) => event.preventDefault() }
+				>
+					<RichText
+						tagName='span'
+						aria-label={ __( 'Add accordion title' ) }
+						className='accordion-title'
+						withoutInteractiveFormatting
+						value={ !! accordionTitle ? accordionTitle : __( 'Accordion Toggle Title' ) }
+						onChange={ ( newAccordionTitle ) =>
+							setAttributes( { accordionTitle: newAccordionTitle, accordionId: clientId } )
+						}
+						placeholder={ __( 'Add accordion title' ) }
+						onRemove={ false }
+					/>
+					<span className='accordion-icon'></span>
+				</button>
+			</h3>
+			<div { ...innerBlocksProps }></div>
+		</>
 	);
 }
+
+export default AccordionItem;
