@@ -3,17 +3,22 @@
  * and in the editor.
  */
 body {
-	--wpe-accordion-border-color: var(--wp--preset--color--primary, hsl(0deg 0% 52%));
-	--wpe-accordion-border-color--focus: var(--wp--preset--color--base, hsl(216deg 94% 43%));
-	--wpe-accordion-background-color--interactive: var(--wp--preset--color--primary, hsl(216deg 94% 94%));
-	--wpe-accordion--preset--spacing--20: 1rem;
-	--wpe-accordion--preset--spacing--30: clamp(1.5rem, 5vw, 2rem);
+	--wp--preset--accordion-base: var(--wp--preset--color--base, var(--wp--preset--color--primary), hsl(0, 0%, 10%));
+	--wp--preset--accordion-contrast: var(--wp--preset--color--contrast, var(--wp--preset--color--secondary), hsl(0, 0%, 93%));
+	--wp--preset--accordion-border-color: var(--wp--preset--color--contrast, var(--wp--preset--color--secondary) hsl(0, 0%, 0%));
+
+	--wp--preset--accordion--trigger-interactive-base: var(--wp--preset--color--tertiary, hsl(0, 0%, 90%));
+	--wp--preset--accordion--trigger-interactive-contrast: var(--wp--preset--color--secondary, hsl(0, 0%, 10%));
 }
 
 .wp-block-wpe-accordion {
+	background-color: var(--wp--preset--accordion-base);
+	border-color: var(--wp--preset--accordion-border-color);
+	border-style: solid;
+	border-width: 2px;
+	font-size: 1rem;
 	margin: 0;
 	padding: 0;
-	border: 2px solid var(--wpe-accordion-border-color);
 	width: 100%;
 }
 
@@ -24,7 +29,8 @@ body {
 }
 
 .wp-block-wpe-accordion:focus-within {
-	border-color: var(--wpe-accordion-border-color--focus);
+	outline: 0.15ch solid var(--wp--preset--color--primary, hsl(0, 0%, 42%));
+	outline-offset: 0.7ch;
 }
 
 .wp-block-wpe-accordion:focus-within h3 {
@@ -32,41 +38,47 @@ body {
 }
 
 .wp-block-wpe-accordion > * + * {
-	border-top: 1px solid var(--wpe-accordion-border-color);
+	border-top: 1px solid var(--wp--preset--color--contrast, hsl(0 0% 0%));
 }
 
 .accordion-trigger {
-	background: none;
-	color: hsl(0deg 0% 13%);
+	background-color: transparent;
+	border: none;
+	color: var(--wp--preset--accordion-contrast);
+	cursor: pointer;
 	display: block;
+	font-family: inherit;
 	font-size: 1rem;
 	font-weight: normal;
 	margin: 0;
-	padding: var(--wpe-accordion--preset--spacing--20) var(--wpe-accordion--preset--spacing--30);
+	outline: none;
+	padding: 0.75em 1.25em;
 	position: relative;
 	text-align: left;
 	width: 100%;
-	outline: none;
 }
 
 .accordion-trigger:focus,
 .accordion-trigger:hover {
-	background: var(--wpe-accordion-background-color--interactive);
+	background-color: var(--wp--preset--accordion--trigger-interactive-base);
+	color: var(--wp--preset--accordion--trigger-interactive-contrast);
 }
 
 .accordion-trigger:focus {
 	outline: 4px solid transparent;
+	text-decoration: underline;
 }
 
 .accordion-title {
-	display: block;
 	border: transparent 2px solid;
-	padding: 0.25em;
+	display: block;
 	outline: none;
+	pointer-events: none;
+	padding: 0.25em;
 }
 
 .accordion-trigger:focus .accordion-title {
-	border-color: var(--wpe-accordion-border-color--focus);
+	border-color: var(--wp--preset--color--tertiary, hsl(0, 0%, 70%));
 }
 
 .accordion-icon {
@@ -93,4 +105,9 @@ body {
 /* For Edge bug https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4806035/ */
 .accordion-panel[hidden] {
 	display: none;
+}
+
+.wp-block-wpe-accordion-item {
+	margin: 0;
+	padding: 1em 1.5em;
 }

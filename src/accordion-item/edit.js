@@ -37,8 +37,6 @@ function AccordionItem( { attributes, setAttributes, clientId } ) {
 						onChange={ ( newAccordionTitle ) =>
 							setAttributes( { accordionTitle: newAccordionTitle, accordionId: clientId } )
 						}
-						placeholder={ __( 'Add accordion title' ) }
-						onRemove={ false }
 					/>
 					<span className='accordion-icon'></span>
 				</button>

@@ -12,9 +12,7 @@ function Accordion() {
 	} );
 
 	return (
-		<>
-			<div { ...innerBlocksProps }></div>
-		</>
+		<div { ...innerBlocksProps }></div>
 	);
 }
 

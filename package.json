@@ -1,6 +1,6 @@
 {
 	"name": "accordion",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "An accordion block with collapsible sections",
 	"license": "GPL-2.0-or-later",
 	"scripts": {

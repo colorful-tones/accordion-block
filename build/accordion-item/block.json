@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
   "name": "wpe/accordion-item",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "title": "Accordion Item",
   "category": "widgets",
   "parent": [
@@ -30,6 +30,5 @@
     "html": false
   },
   "textdomain": "accordion-item",
-  "editorScript": "file:./index.js",
-  "style": "file:./style-index.css"
+  "editorScript": "file:./index.js"
 }
