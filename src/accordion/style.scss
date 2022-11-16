@@ -111,3 +111,12 @@ body {
 	margin: 0;
 	padding: 1em 1.5em;
 }
+
+/* Editor only styles. */
+html :where(.editor-styles-wrapper) .accordion-title {
+	pointer-events: auto;
+}
+
+html :where(.editor-styles-wrapper) .accordion-trigger {
+	cursor: auto;
+}
