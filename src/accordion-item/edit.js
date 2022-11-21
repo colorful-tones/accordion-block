@@ -1,48 +1,66 @@
 /**
- * WordPress dependencies
+ * WordPress dependencies.
  */
-import { useInnerBlocksProps, RichText, useBlockProps, store as blockEditorStore } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
+import {
+	useInnerBlocksProps,
+	RichText,
+	useBlockProps,
+} from '@wordpress/block-editor';
 
 /**
- * Constants
+ * Constants.
  */
-const TEMPLATE = [
-	[ 'core/paragraph', { placeholder : 'Add content…' } ],
-];
-
+const TEMPLATE = [ [ 'core/paragraph', { placeholder: 'Add content…' } ] ];
 
 function AccordionItem( { attributes, setAttributes, clientId } ) {
 	const { accordionTitle } = attributes;
-	const { accordionId } = attributes;
-	const blockProps = useBlockProps();
-	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+	const blockProps         = useBlockProps();
+	const innerBlocksProps   = useInnerBlocksProps( blockProps, {
 		template: TEMPLATE,
 		templateLock: false,
 	} );
 
-	return(
-		<>
-			<h3 { ...innerBlocksProps }>
+	const parent = useSelect(
+		( select ) => select( 'core/block-editor' ).getBlockParents( clientId ),
+		[ clientId ]
+	);
+
+	const TitleTag = parent?.attributes?.accordionTitleTag ?? 'h3';
+
+	return (
+		<div { ...blockProps }>
+			<TitleTag>
 				<button
-					className='accordion-trigger'
+					className="accordion-trigger"
 					onClick={ ( event ) => event.preventDefault() }
 				>
 					<RichText
-						tagName='span'
-						aria-label={ __( 'Add accordion title' ) }
-						className='accordion-title'
-						withoutInteractiveFormatting
-						value={ !! accordionTitle ? accordionTitle : __( 'Accordion Toggle Title' ) }
+						tagName="span"
+						aria-label={ __(
+							'Add accordion title',
+							'wpe-accordion'
+						) }
+						className="accordion-title"
+						value={ accordionTitle ?? __(
+							'Accordion Toggle Title',
+							'wpe-accordion'
+						) }
 						onChange={ ( newAccordionTitle ) =>
-							setAttributes( { accordionTitle: newAccordionTitle, accordionId: clientId } )
+							setAttributes( {
+								accordionTitle: newAccordionTitle,
+								accordionId: clientId,
+							} )
 						}
 					/>
-					<span className='accordion-icon'></span>
+					<span className="accordion-icon"/>
 				</button>
-			</h3>
-			<div { ...innerBlocksProps }></div>
-		</>
+			</TitleTag>
+			<div className={ 'wp-block-wpe-accordion-item__inner' }>
+				{ innerBlocksProps.children }
+			</div>
+		</div>
 	);
 }
 

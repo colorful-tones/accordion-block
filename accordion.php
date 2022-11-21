@@ -7,7 +7,8 @@
  * Version:           0.1.2
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       accordion
+ * Text Domain:       wpe-accordion
+ * Domain Path:       /languages
  *
  * @package           wpe-accordion
  */
@@ -31,6 +32,6 @@ add_action( 'init', 'wpe_accordion_block_init' );
  * @return void
  */
 function wpe_accordion_block_scripts() {
-	wp_register_script( 'wpe-accordion-js', plugin_dir_url( __FILE__ ) . 'build/accordion/script.js', null, '0.1.0', true );
+	wp_register_script( 'wpe-accordion-js', plugin_dir_url( __FILE__ ) . 'build/accordion/script.js', null, '0.1.2', true );
 }
 add_action( 'init', 'wpe_accordion_block_scripts' );

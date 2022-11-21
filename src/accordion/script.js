@@ -4,7 +4,7 @@ export { Accordion };
 
 export default Accordion;
 
-// Init accordions
+// Init accordions.
 const accordions = document.querySelectorAll( '.wp-block-wpe-accordion h3' );
 
 accordions.forEach( ( accordionEl ) => {

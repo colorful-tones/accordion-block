@@ -6,13 +6,16 @@ export default class Accordion {
 		const controlsId = this.buttonEl.getAttribute( 'aria-controls' );
 		this.contentEl = document.getElementById( controlsId );
 
-		// Set initial state
-		this.buttonEl.setAttribute( 'aria-expanded', 'false');
+		// Set initial state.
+		this.buttonEl.setAttribute( 'aria-expanded', 'false' );
 		this.open = false;
 		this.contentEl.setAttribute( 'hidden', '' );
 
-		// Add event listeners
-		this.buttonEl.addEventListener( 'click', this.onButtonClick.bind( this ) );
+		// Add event listeners.
+		this.buttonEl.addEventListener(
+			'click',
+			this.onButtonClick.bind( this )
+		);
 	}
 
 	onButtonClick() {
@@ -20,16 +23,16 @@ export default class Accordion {
 	}
 
 	toggle( open ) {
-		// Don't do anything if the open state doesn't change
+		// Don't do anything if the open state doesn't change.
 		if ( open === this.open ) {
 			return;
 		}
 
-		// Update the internal state
+		// Update the internal state.
 		this.open = open;
 
-		// Handle DOM updates
-		this.buttonEl.setAttribute( 'aria-expanded', `${open}` );
+		// Handle DOM updates.
+		this.buttonEl.setAttribute( 'aria-expanded', `${ open }` );
 		if ( open ) {
 			this.contentEl.removeAttribute( 'hidden' );
 		} else {
@@ -37,7 +40,7 @@ export default class Accordion {
 		}
 	}
 
-	// Add public open and close methods for convenience
+	// Add public open and close methods for convenience.
 	open() {
 		this.toggle( true );
 	}
