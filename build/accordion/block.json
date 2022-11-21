@@ -10,7 +10,12 @@
   "supports": {
     "html": false
   },
-  "textdomain": "accordion",
+  "attributes": {
+    "accordionTitleTag": {
+      "type": "string"
+    }
+  },
+  "textdomain": "wpe-accordion",
   "editorScript": "file:./index.js",
   "script": [
     "file:./script.js",

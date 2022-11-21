@@ -70,11 +70,15 @@ body {
 }
 
 .accordion-title {
-	border: transparent 2px solid;
-	display: block;
-	outline: none;
-	pointer-events: none;
-	padding: 0.25em;
+	margin: 0;
+
+	&-content {
+		border: transparent 2px solid;
+		display: block;
+		outline: none;
+		pointer-events: none;
+		padding: 0.25em;
+	}
 }
 
 .accordion-trigger:focus .accordion-title {

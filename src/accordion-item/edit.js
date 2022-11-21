@@ -22,12 +22,19 @@ function AccordionItem( { attributes, setAttributes, clientId } ) {
 		templateLock: false,
 	} );
 
-	const parent = useSelect(
-		( select ) => select( 'core/block-editor' ).getBlockParents( clientId ),
-		[ clientId ]
-	);
+	const TitleTag = useSelect(
+		( select ) => {
+			const parent           = select( 'core/block-editor' )?.getBlockParents( clientId );
+			const parentAttributes = select( 'core/block-editor' )?.getBlockAttributes( parent );
 
-	const TitleTag = parent?.attributes?.accordionTitleTag ?? 'h3';
+			return parentAttributes?.accordionTitleTag;
+		},
+		[ clientId ]
+	) ?? 'h3';
+
+	if ( attributes?.accordionTitleTag !== TitleTag ) {
+		setAttributes( { accordionTitleTag: TitleTag } );
+	}
 
 	return (
 		<div { ...blockProps }>
@@ -43,7 +50,7 @@ function AccordionItem( { attributes, setAttributes, clientId } ) {
 							'wpe-accordion'
 						) }
 						className="accordion-title"
-						value={ accordionTitle ?? __(
+						placeholder={ accordionTitle ?? __(
 							'Accordion Toggle Title',
 							'wpe-accordion'
 						) }

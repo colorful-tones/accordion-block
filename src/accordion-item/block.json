@@ -1,32 +1,31 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
-	"name": "wpe/accordion-item",
-	"version": "0.1.2",
-	"title": "Accordion Item",
-	"category": "widgets",
-	"parent": ["wpe/accordion"],
-	"icon": "list-view",
-	"description": "Create an accordion item.",
-	"attributes": {
-		"accordionTitle": {
-			"type": "string",
-			"source": "text",
-			"selector": ".accordion-title"
-		},
-		"accordionId": {
-			"type": "string"
-		},
-		"content": {
-			"type": "string",
-			"source": "html",
-			"selector": ".accordion-panel > div",
-			"__experimentalRole": "content"
-		}
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "wpe/accordion-item",
+  "version": "0.1.2",
+  "title": "Accordion Item",
+  "category": "widgets",
+  "parent": [
+	"wpe/accordion"
+  ],
+  "icon": "list-view",
+  "description": "Create an accordion item.",
+  "attributes": {
+	"accordionTitle": {
+	  "type": "string",
+	  "source": "text",
+	  "selector": ".accordion-title"
 	},
-	"supports": {
-		"html": false
+	"accordionId": {
+	  "type": "string"
 	},
-	"textdomain": "accordion-item",
-	"editorScript": "file:./index.js"
+	"accordionTitleTag": {
+	  "type": "string"
+	}
+  },
+  "supports": {
+	"html": false
+  },
+  "textdomain": "wpe-accordion",
+  "editorScript": "file:./index.js"
 }

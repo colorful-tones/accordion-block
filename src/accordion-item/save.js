@@ -14,10 +14,11 @@ const Save = ( { attributes } ) => {
 	const blockProps         = useBlockProps.save();
 	const innerBlocksProps   = useInnerBlocksProps.save( blockProps );
 	const truncId            = accordionId?.slice( - 8 );
+	const TitleTag           = attributes?.accordionTitleTag ?? 'h3';
 
 	return (
 		<>
-			<h3 { ...innerBlocksProps }>
+			<TitleTag className={'accordion-title'}>
 				<button
 					className="accordion-trigger"
 					id={ `accordion-item-${ truncId }` }
@@ -26,12 +27,12 @@ const Save = ( { attributes } ) => {
 				>
 					<RichText.Content
 						tagName="span"
-						className="accordion-title"
+						className="accordion-title-content"
 						value={ accordionTitle ?? __( 'Accordion Title' ) }
 					/>
 					<span className="accordion-icon"/>
 				</button>
-			</h3>
+			</TitleTag>
 			<div
 				{ ...innerBlocksProps }
 				id={ `accordion-content-${ truncId }` }
