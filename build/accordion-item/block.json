@@ -12,9 +12,7 @@
   "description": "Create an accordion item.",
   "attributes": {
     "accordionTitle": {
-      "type": "string",
-      "source": "text",
-      "selector": ".accordion-title"
+      "type": "string"
     },
     "accordionId": {
       "type": "string"

@@ -13,8 +13,8 @@
   "attributes": {
 	"accordionTitle": {
 	  "type": "string",
-	  "source": "text",
-	  "selector": ".accordion-title"
+	  "selector": "span",
+	  "source": "html"
 	},
 	"accordionId": {
 	  "type": "string"

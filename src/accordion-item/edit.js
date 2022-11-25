@@ -38,22 +38,23 @@ function AccordionItem( { attributes, setAttributes, clientId } ) {
 
 	return (
 		<div { ...blockProps }>
-			<TitleTag>
+			<TitleTag className={ 'accordion-title' }>
 				<button
 					className="accordion-trigger"
 					onClick={ ( event ) => event.preventDefault() }
 				>
 					<RichText
-						tagName="span"
+						tagName={ 'span' }
 						aria-label={ __(
 							'Add accordion title',
 							'wpe-accordion'
 						) }
-						className="accordion-title"
+						className={ 'accordion-title-content' }
 						placeholder={ accordionTitle ?? __(
 							'Accordion Toggle Title',
 							'wpe-accordion'
 						) }
+						value={ accordionTitle }
 						onChange={ ( newAccordionTitle ) =>
 							setAttributes( {
 								accordionTitle: newAccordionTitle,
