@@ -12,23 +12,18 @@
   "description": "Create an accordion item.",
   "attributes": {
     "accordionTitle": {
-      "type": "string",
-      "source": "text",
-      "selector": ".accordion-title"
+      "type": "string"
     },
     "accordionId": {
       "type": "string"
     },
-    "content": {
-      "type": "string",
-      "source": "html",
-      "selector": ".accordion-panel > div",
-      "__experimentalRole": "content"
+    "accordionTitleTag": {
+      "type": "string"
     }
   },
   "supports": {
     "html": false
   },
-  "textdomain": "accordion-item",
+  "textdomain": "wpe-accordion",
   "editorScript": "file:./index.js"
 }

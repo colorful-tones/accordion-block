@@ -1,7 +1,7 @@
 {
-	"name": "accordion",
+	"name": "wpe-accordion",
 	"version": "0.1.2",
-	"description": "An accordion block with collapsible sections",
+	"description": "An accordion block with collapsible sections.",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
 		"build": "wp-scripts build",
@@ -10,10 +10,16 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start"
+		"start": "wp-scripts start",
+	  "i18n": "wp i18n make-pot ./ languages/wpe-accordion.pot --exclude='wp,wp-content,vendor,tests,node_modules,build,assets,src"
 	},
 	"devDependencies": {
+		"@wordpress/block-editor": "^10.5.0",
+		"@wordpress/components": "^22.1.0",
+		"@wordpress/data": "^7.6.0",
+		"@wordpress/eslint-plugin": "^13.6.0",
 		"@wordpress/i18n": "^4.21.0",
+		"@wordpress/prettier-config": "^2.5.0",
 		"@wordpress/scripts": "^24.5.0",
 		"classnames": "^2.3.2"
 	}
